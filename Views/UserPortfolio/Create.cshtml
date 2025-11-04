@@ -1,0 +1,33 @@
+﻿@model Portfolio.Models.UserPortfolio
+
+@{
+    ViewData["Title"] = "Add Portfolio";
+}
+
+<h2 class="text-light mb-4">Add a New Portfolio</h2>
+
+<form asp-action="Create" enctype="multipart/form-data">
+    <div class="mb-3">
+        <label class="form-label text-light">Title</label>
+        <input asp-for="Title" class="form-control" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label text-light">Description</label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label text-light">Project Link (optional)</label>
+        <input asp-for="Link" class="form-control" />
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label text-light">Upload Image</label>
+        <input type="file" name="imageFile" class="form-control" />
+    </div>
+
+    <button type="submit" class="btn btn-success">Save</button>
+</form>

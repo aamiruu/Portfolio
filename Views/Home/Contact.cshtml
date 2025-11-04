@@ -1,0 +1,44 @@
+﻿@model Portfolio.Models.ContactMessage
+@{
+    ViewData["Title"] = "تماس با ما";
+}
+
+<div class="container mt-5">
+    <h2 class="text-center mb-4">تماس با ما</h2>
+
+    <!-- پیام موفقیت -->
+    @if (TempData["ContactSuccess"] != null)
+    {
+        <div class="alert alert-success text-center">
+            @TempData["ContactSuccess"]
+        </div>
+    }
+
+    <!-- فرم تماس -->
+    <form asp-action="Contact" method="post" class="shadow p-4 rounded bg-light">
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label fw-bold">نام شما</label>
+            <input asp-for="Name" class="form-control" placeholder="نام خود را وارد کنید..." />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Email" class="form-label fw-bold">ایمیل</label>
+            <input asp-for="Email" class="form-control" placeholder="example@email.com" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Message" class="form-label fw-bold">پیام</label>
+            <textarea asp-for="Message" rows="5" class="form-control" placeholder="متن پیام خود را بنویسید..."></textarea>
+            <span asp-validation-for="Message" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-primary w-100">ارسال پیام</button>
+    </form>
+</div>
+
+@section Scripts {
+    <!-- برای فعال کردن اعتبارسنجی سمت کلاینت -->
+    <partial name="_ValidationScriptsPartial" />
+}
